@@ -11,8 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
-
-
+import org.springframework.data.domain.Page;
 
 @Entity
 public class Pessoa {
@@ -31,10 +30,11 @@ public class Pessoa {
 	private String senha;
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Twitter> twitters = new ArrayList<>();
-	private List<com.marialinda.twitter.model.Twitter> twitter;
+
 	public void adicionarTwitter(Twitter twitter) {
-		this.twitter.add(twitter);
+		this.twitters.add(twitter);
 	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -74,14 +74,13 @@ public class Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public List<Twitter> getTwitter() {
-		return getTwitter();
+
+	public List<Twitter> getTwitters() {
+		return twitters;
 	}
 
-	public void setTweets(List<Twitter> twitter) {
-		this.twitter = twitter;
+	public void setTwitters(List<Twitter> twitters) {
+		this.twitters = twitters;
 	}
-
-
 
 }
